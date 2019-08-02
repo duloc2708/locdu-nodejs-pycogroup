@@ -44,7 +44,7 @@ describe('Test question 3', () => {
     describe('Test case for GROCERIES with Bill on 100$', () => {
         it('should return object successfully', () => {
             const resultFromStore = resultQ3.calculatorBill('ON_GROCERIES', 200)
-            const resultCompare = 190
+            const resultCompare = 200
             chai.expect(resultCompare).is.equals(resultFromStore);
         });
     });

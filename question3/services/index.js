@@ -13,7 +13,7 @@ const calculateResult = ((discountType, totalBill) => {
     percentageDiscount.calculate();
     totalAmount = percentageDiscount.totalPayment;
     // calculate for every $100 on bill
-    if (totalAmount > 100) {
+    if (totalAmount > 100 && discountType != 'ON_GROCERIES') {
         const specialDiscount = new Discount(DISCOUNT_BILL_ON_100, totalAmount);
         // call calculate again
         specialDiscount.calculate();
