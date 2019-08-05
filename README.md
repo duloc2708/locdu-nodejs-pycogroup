@@ -27,6 +27,9 @@ npm run test-coverage
   - load(): we will extract the words in the array, then each child element I will use Object.key to get the Key / Value to return to the string, in the last key I will assign additional characters "n"
   
 ### Question 3:
+- I will split OOP model, including model, controller, service
+- Input will be an array of user types and total bill, then the function will separate users to calculate discount for each user
+- Output will be a list of users with the amount they have to pay
 
 #### use example:
 ```
