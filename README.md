@@ -33,6 +33,8 @@ npm run test-coverage
 
 #### use example:
 ```
+Input:
+
 const resultQ3 = require('./question3/controller')
 const listUser = [
     { "id": 1, "name": "User 1", type: "IS_AN_EMPLOYEE", totalBill: 300 },
@@ -41,4 +43,10 @@ const listUser = [
     { "id": 4, "name": "User 4", type: "CASE_OTHER", totalBill: 300 }
 ]
 console.log(resultQ3.createBillController(listUser))
+
+Result :
+[ { name: 'User 1', totalMoney: 195 },
+  { name: 'User 2', totalMoney: 255 },
+  { name: 'User 3', totalMoney: 270 },
+  { name: 'User 4', totalMoney: 285 } ]
 ```
