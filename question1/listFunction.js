@@ -1,23 +1,32 @@
-const CHARATAR1 = ';'
+const CHARATAR1 = '&'
 const CHARATAR2 = '='
+const CHARATAR3 = ';'
+const CHARATAR4 = '\n'
 function load(value) {
-    return JSON.stringify(value)
-}
-function store(params = '') {
+    let strText = value
     let listData = []
-    try {
-        let repAllCharacter = params.replace(/[\\n "]/g, CHARATAR1);
-        repAllCharacter && repAllCharacter.split(CHARATAR1).map(item => {
-            if (item) {
-                let obj = {}
+    strText = strText.replace(/\n/g, CHARATAR1);
+    strText && strText.split(CHARATAR1).map(textElem => {
+        let obj = {}
+        if (textElem) {
+            textElem.split(CHARATAR3).map(item => {
                 obj[item.split(CHARATAR2)[0]] = item.split(CHARATAR2)[1]
-                listData.push(obj)
-            }
-        })
-    } catch{
-
-    }
+            })
+            listData.push(obj)
+        }
+    })
     return listData
+}
+function store(data = []) {
+    let strContentBreakLine = ''
+    data.map((itemArr, iArr) => {
+        Object.keys(itemArr).forEach((item, i) => {
+            strContentBreakLine = strContentBreakLine + item + CHARATAR2 + itemArr[item]
+            if (i < Object.keys(itemArr).length - 1) strContentBreakLine = strContentBreakLine + CHARATAR3
+        });
+        if (iArr < data.length - 1) strContentBreakLine = strContentBreakLine + CHARATAR4
+    })
+    return strContentBreakLine
 }
 module.exports = {
     load: load,

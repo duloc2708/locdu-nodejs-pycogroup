@@ -5,7 +5,6 @@ const should = chai.should();
 chai.use(chaiHttp);
 const resultQ3 = require('../question3/controller')
 const totalBillDefault = 100
-
 /// UNIT TEST QUESTION 3
 describe('Test question 3', () => {
     beforeEach((done) => {
@@ -13,39 +12,34 @@ describe('Test question 3', () => {
     });
     describe('Test Employee', () => {
         it('should return object successfully', () => {
-            const resultFromStore = resultQ3.calculatorBill('IS_AN_EMPLOYEE', totalBillDefault)
-            const resultCompare = 70
-            chai.expect(resultCompare).is.equals(resultFromStore);
+            // exucute result
+            let rs = resultQ3.createBillController([{ "name": "User 1", type: "IS_AN_EMPLOYEE", totalBill: 300 }])
+            // compare result
+            chai.expect([{ name: 'User 1', totalMoney: 195 }]).to.deep.equals(rs);
         });
     });
     describe('Test Affiliate', () => {
         it('should return object successfully', () => {
-            const resultFromStore = resultQ3.calculatorBill('IS_AN_AFFILIATE', totalBillDefault)
-            const resultCompare = 90
-            chai.expect(resultCompare).is.equals(resultFromStore);
+            // exucute result
+            let rs = resultQ3.createBillController([{ "name": "User 2", type: "IS_AN_AFFILIATE", totalBill: 300 }])
+            // compare result
+            chai.expect([{ name: 'User 2', totalMoney: 255 }]).to.deep.equals(rs);
         });
     });
     describe('Test customer for over 2 year', () => {
         it('should return object successfully', () => {
-            const resultFromStore = resultQ3.calculatorBill('IS_CUSTOMER_FOR_OVER_2_YEAS', totalBillDefault)
-            const resultCompare = 95
-            chai.expect(resultCompare).is.equals(resultFromStore);
+            // exucute result
+            let rs = resultQ3.createBillController([{ "name": "User 3", type: "IS_CUSTOMER_FOR_OVER_2_YEAS", totalBill: 300 }])
+            // compare result
+            chai.expect([{ name: 'User 3', totalMoney: 270 }]).to.deep.equals(rs);
         });
     });
-
-    describe('Test case for GROCERIES', () => {
+    describe('Test case user other', () => {
         it('should return object successfully', () => {
-            const resultFromStore = resultQ3.calculatorBill('ON_GROCERIES', totalBillDefault)
-            const resultCompare = 100
-            chai.expect(resultCompare).is.equals(resultFromStore);
-        });
-    });
-
-    describe('Test case for GROCERIES with Bill on 100$', () => {
-        it('should return object successfully', () => {
-            const resultFromStore = resultQ3.calculatorBill('ON_GROCERIES', 200)
-            const resultCompare = 200
-            chai.expect(resultCompare).is.equals(resultFromStore);
+            // exucute result
+            let rs = resultQ3.createBillController([{ "name": "User 4", type: "CASE_OTHER", totalBill: 300 }])
+            // compare result
+            chai.expect([{ name: 'User 4', totalMoney: 285 }]).to.deep.equals(rs);
         });
     });
 });

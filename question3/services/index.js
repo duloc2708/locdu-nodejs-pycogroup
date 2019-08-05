@@ -1,26 +1,23 @@
-const Discount = require('../model/model.discount.js');
-const DISCOUNT_BILL_ON_100 = 5;
-const discountPrice = {
-    IS_AN_EMPLOYEE: 30,
-    IS_AN_AFFILIATE: 10,
-    IS_CUSTOMER_FOR_OVER_2_YEAS: 5,
-    ON_GROCERIES: 0
+const User = require('../model/User.js');
+const Bill = require('../model/Bill.js');
+const { DISCOUNT_BILL_ON_100, DISCOUNT_BY_USER } = require('../constant');
+const createBill = (listUser) => {
+    let listResultUser = []
+    listUser.map(item => {
+        let { id, name, type, totalBill } = item
+        // create modal user, bill
+        let user = new User(`user-${id}`, name, type),
+            bill = new Bill(`order-user-${id}`, totalBill);
+        // create discount bill on 100$ and discount each user type
+        let discountOnBill100 = totalBill >= 100 ? bill.discountOnBill100(DISCOUNT_BILL_ON_100) : 0,
+            discountByUser = bill.discountByTypeUser(DISCOUNT_BY_USER[type]) || 0;
+        // cal total money each user
+        let totalMoney = bill.calNetpayment(discountOnBill100, discountByUser)
+        user.totalMoney = totalMoney
+        listResultUser.push({ name: user.name, totalMoney: user.totalMoney })
+    })
+    return listResultUser
 }
-const calculateResult = ((discountType, totalBill) => {
-    let totalAmount = totalBill;
-    // calculate for percentage discount
-    const percentageDiscount = new Discount(discountPrice[discountType], totalBill);
-    percentageDiscount.calculate();
-    totalAmount = percentageDiscount.totalPayment;
-    // calculate for every $100 on bill
-    if (totalAmount > 100 && discountType != 'ON_GROCERIES') {
-        const specialDiscount = new Discount(DISCOUNT_BILL_ON_100, totalAmount);
-        // call calculate again
-        specialDiscount.calculate();
-        totalAmount = specialDiscount.totalPayment;
-    }
-    return totalAmount;
-});
 module.exports = {
-    calculateResult: calculateResult
+    createBill: createBill
 }

@@ -5,14 +5,17 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
-    "test": "mocha --timeout 10000"
+    "test": "mocha --timeout 10000",
+    "test-coverage": "nyc mocha --timeout 15000 --require babel-core/register"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "babel-register": "^6.26.0",
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
-    "mocha": "^6.2.0"
+    "mocha": "^6.2.0",
+    "nyc": "^14.1.1"
   }
 }

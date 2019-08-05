@@ -1,7 +1,7 @@
-const { calculateResult } = require('../services/index')
-function calculatorBill(typeEmployee, totalAmount) {
-    return calculateResult(typeEmployee, totalAmount)
+const { createBill } = require('../services/index')
+function createBillController(listUser) {
+    return createBill(listUser)
 }
 module.exports = {
-    calculatorBill: calculatorBill
+    createBillController: createBillController
 }
