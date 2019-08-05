@@ -5,11 +5,7 @@ const should = chai.should();
 chai.use(chaiHttp);
 
 const { load, store } = require('../question1/listFunction')
-const strText = "key1=value1;key2=value2\nkeyA=value for key A;keyB=value for key B";
-const data = [
-    { key1: 'value1', key2: "value2" },
-    { keyA: "value for key A", keyB: "value for key B" }
-];
+const { Q1: { strText, array } } = require('../data')
 
 /// UNIT TEST QUESTION 1
 describe('Test question 1', () => {
@@ -20,13 +16,13 @@ describe('Test question 1', () => {
     describe('testing function LOAD', () => {
         it('should return object successfully', () => {
             const getArrData = load(strText);
-            chai.expect(data).to.deep.equals(getArrData);
+            chai.expect(array).to.deep.equals(getArrData);
         });
     });
     // test function load test
     describe('testing function STORE', () => {
         it('should return object successfully', () => {
-            const getText = store(data);
+            const getText = store(array);
             chai.expect(strText).is.equals(getText);
         });
     });
