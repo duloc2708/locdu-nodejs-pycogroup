@@ -1,4 +1,5 @@
 // console.log('--------------------QUESTION 1------------------')
+console.log('-------------------QUESTION 1 :')
 
 const resultQ1 = require('./question1')
 
@@ -12,5 +13,7 @@ const listUser = [
     { "id": 3, "name": "User 3", type: "IS_CUSTOMER_FOR_OVER_2_YEAS", totalBill: 300 },
     { "id": 4, "name": "User 4", type: "CASE_OTHER", totalBill: 300 }
 ]
+console.log('-------------------QUESTION 3 :')
+
 console.log('Function load total money each USER :')
 console.log(resultQ3.createBillController(listUser))

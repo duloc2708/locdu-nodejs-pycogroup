@@ -10,6 +10,14 @@ describe('Test question 3', () => {
     beforeEach((done) => {
         done();
     });
+    describe('Test validate input data', () => {
+        it('should return object successfully', () => {
+            // exucute result
+            let rs = resultQ3.createBillController([{ "name": "User 1", type: "IS_AN_EMPLOYEE", totalBill: "NULL" }])
+            // compare result
+            chai.expect("Input totalBill not format . please check again!").is.equals(rs);
+        });
+    });
     describe('Test Employee', () => {
         it('should return object successfully', () => {
             // exucute result
