@@ -5,6 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "node app.js",
+    "start-q1": "node ./question1/index.js",
+    "start-q3": "node ./question3/index.js",
     "test": "mocha --timeout 10000",
     "test-coverage": "nyc mocha --timeout 15000 --require babel-core/register"
   },

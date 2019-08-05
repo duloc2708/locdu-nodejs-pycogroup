@@ -7,7 +7,7 @@
 ```
 npm install
 ```
-- To start run show result:
+- To start run show result Q1,Q3:
 ```
 npm run start
 ```
@@ -25,12 +25,18 @@ npm run test-coverage
 ### Question 1:
   - store(): O(n), we will replace the whole character "n" and browse all the ";" signs to return to the array, then browse to cut the beginning and the last element separated by a "="
   - load(): we will extract the words in the array, then each child element I will use Object.key to get the Key / Value to return to the string, in the last key I will assign additional characters "n"
-  
+### test:  
+```
+npm run start-q1
+```
 ### Question 3:
 - I will split OOP model, including model, controller, service
 - Input will be an array of user types and total bill, then the function will separate users to calculate discount for each user
 - Output will be a list of users with the amount they have to pay
-
+### test:  
+```
+npm run start-q3
+```
 #### use example:
 ```
 Input:

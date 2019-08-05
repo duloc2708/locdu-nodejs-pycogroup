@@ -7,7 +7,6 @@ class Bill {
     set id(id) { this._id = id; }
     get price() { return this._price; }
     set price(price) { this._price = price; }
-
     discountOnBill100(discount) {
         return (parseFloat(this._price) * discount / 100)
     }

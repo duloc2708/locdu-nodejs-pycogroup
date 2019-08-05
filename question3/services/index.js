@@ -13,8 +13,7 @@ const createBill = (listUser) => {
             discountByUser = bill.discountByTypeUser(DISCOUNT_BY_USER[type]) || 0;
         // cal total money each user
         let totalMoney = bill.calNetpayment(discountOnBill100, discountByUser)
-        user.totalMoney = totalMoney
-        listResultUser.push({ name: user.name, totalMoney: user.totalMoney })
+        listResultUser.push({ name: user.name, totalMoney})
     })
     return listResultUser
 }
