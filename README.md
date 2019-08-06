@@ -9,9 +9,12 @@ npm install
 ```
 - To start run show result Q1,Q3:
 ```
-npm run start
+npm run start Q1
 ```
 - npm run start-q1
+```
+npm run start Q3
+```
 - npm run start-q3
 ```
 npm test
