@@ -1,4 +1,5 @@
 const DISCOUNT_BILL_ON_100 = 5;
+const ON_LIMIT_MONEY_HAVE_DISCOUNT = 100; //100$
 const Cart = require('./model/Cart.js');
 const Product = require('./model/Product.js');
 const User = require('./model/User.js');
@@ -11,7 +12,8 @@ class Bill {
         return this._result
     }
     totalBillDiscountOnBill100(price, discount) {
-        return price - (price * discount / 100)
+        if (price >= ON_LIMIT_MONEY_HAVE_DISCOUNT) return price - (price * discount / 100)
+        return 0
     }
     totalBillOnDiscountByTypeUser(price, type) {
         let discountByUser = 0
@@ -56,9 +58,8 @@ class Bill {
             totalMoney = this.totalBillOnDiscountByTypeUser(totalMoney, userL._type)
 
             // case total bill on 100$ then unless 5$
-            if (totalMoney >= 100) {
-                totalMoney = this.totalBillDiscountOnBill100(totalMoney, DISCOUNT_BILL_ON_100)
-            }
+            totalMoney = this.totalBillDiscountOnBill100(totalMoney, DISCOUNT_BILL_ON_100)
+            
             ListData.push({ user: userL._name, type: userL._type, totalMoneyPay: totalMoney })
         })
         this._result = ListData
