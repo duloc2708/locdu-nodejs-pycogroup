@@ -11,7 +11,8 @@ npm install
 ```
 npm run start
 ```
-- To test run show result:
+- npm run start-q1
+- npm run start-q3
 ```
 npm test
 ```

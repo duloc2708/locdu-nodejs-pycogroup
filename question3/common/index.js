@@ -1,18 +1,8 @@
-function validateInputUser(data) {
-    let check = true
-    if (data && data.length > 0) {
-        data.map(item => {
-            let { totalBill } = item
-            if (isNaN(totalBill)) {
-                check = false
-                return false
-            }
-        })
-    } else {
-        return false
+const validKeyBeforeAdd = (setables, name) => {
+    if (!setables.includes(name)) {
+        throw new Error(`Cannot set the ${name} property`);
     }
-    return check
-}
+};
 module.exports = {
-    validateInputUser: validateInputUser
+    validKeyBeforeAdd: validKeyBeforeAdd
 }

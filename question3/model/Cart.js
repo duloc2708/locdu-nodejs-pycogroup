@@ -1,12 +1,11 @@
 const { validKeyBeforeAdd } = require("../common")
-class User {
+class Cart {
     constructor(entry) {
-        const setables = ["id", "name", "type"];
+        const setables = ["id", "user", "products"];
         Object.keys(entry).forEach(key => {
             validKeyBeforeAdd(setables, key);
-        })
+        });
         Object.assign(this, entry);
-
         return new Proxy(this, {
             set(target, name, value) {
                 validKeyBeforeAdd(setables, name);
@@ -15,12 +14,6 @@ class User {
             }
         });
     }
-    get id() { return this._id; }
-    set id(id) { this._id = id; }
-    get name() { return this._name; }
-    set name(name) { this._name = name; }
-    get type() { return this._type; }
-    set type(type) { this._type = type; }
 }
 
-module.exports = User;
+module.exports = Cart;
