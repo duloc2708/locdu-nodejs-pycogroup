@@ -31,29 +31,10 @@ npm run test-coverage
 npm run start-q1
 ```
 ### Question 3:
-- I will split OOP model, including model, controller, service
+- I will split OOP model (User, Products, Cart) and Bill for calculator return result
 - Input will be an array of user types and total bill, then the function will separate users to calculate discount for each user
 - Output will be a list of users with the amount they have to pay
 ### test:  
 ```
 npm run start-q3
-```
-#### use example:
-```
-Input:
-
-const resultQ3 = require('./question3/controller')
-const listUser = [
-    { "id": 1, "name": "User 1", type: "IS_AN_EMPLOYEE", totalBill: 300 },
-    { "id": 2, "name": "User 2", type: "IS_AN_AFFILIATE", totalBill: 300 },
-    { "id": 3, "name": "User 3", type: "IS_CUSTOMER_FOR_OVER_2_YEAS", totalBill: 300 },
-    { "id": 4, "name": "User 4", type: "CASE_OTHER", totalBill: 300 }
-]
-console.log(resultQ3.createBillController(listUser))
-
-Result :
-[ { name: 'User 1', totalMoney: 195 },
-  { name: 'User 2', totalMoney: 255 },
-  { name: 'User 3', totalMoney: 270 },
-  { name: 'User 4', totalMoney: 285 } ]
 ```
