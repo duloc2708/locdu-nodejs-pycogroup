@@ -24,8 +24,8 @@ npm run test-coverage
 ## Complexity analysis
 
 ### Question 1:
-  - load(): we will replace the whole character "n" and browse all the ";" signs to return to the array, then browse to cut the beginning and the last element separated by a "="
-  - store(): we will extract the words in the array, then each child element I will use Object.key to get the Key / Value to return to the string, in the last key I will assign additional characters "n"
+  - load(): O(n), we loop n times to read the object, in object children we loop n times to read the data but the Object actually have small pairs key-value
+  - store():O(n) we will extract the words in the array, then each child element I will use Object.key to get the Key / Value to return to the string, in the last key I will assign additional characters "n"
 ### test:  
 ```
 npm run start-q1

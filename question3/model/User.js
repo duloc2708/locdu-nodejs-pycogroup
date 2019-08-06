@@ -6,14 +6,6 @@ class User {
             validKeyBeforeAdd(setables, key);
         })
         Object.assign(this, entry);
-
-        return new Proxy(this, {
-            set(target, name, value) {
-                validKeyBeforeAdd(setables, name);
-                target[name] = value;
-                return true;
-            }
-        });
     }
     get id() { return this._id; }
     set id(id) { this._id = id; }

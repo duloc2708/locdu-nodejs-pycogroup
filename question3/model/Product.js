@@ -1,7 +1,7 @@
 class Product {
   constructor(id = '', price = 0) {
     this._id = id;
-    this._price = price;
+    this._price = price
   }
   get id() {
     return this._id;

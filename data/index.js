@@ -7,9 +7,9 @@ module.exports = {
         ]
     },
     Q3: {
-        listUser: [{ id: 1, "name": "Tom", "type": "IS_AN_EMPLOYEE" },
-        { id: 2, "name": "Jery", "type": "IS_AN_AFFILIATE" },
-        { id: 3, "name": "Other", "type": "IS_CUSTOMER_FOR_OVER_2_YEAS" }],
-        listProduct: [{ id: 1, price: 100 },{ id: 2, price: 200 }]
+        listUser: [{ id: 1, "name": "Tom", "type": "IS_AN_AFFILIATE" },
+        { id: 2, "name": "Jery", "type": "IS_CUSTOMER_FOR_OVER_2_YEAS" },
+        { id: 3, "name": "Jason", "type": "IS_AN_EMPLOYEE" }],
+        listProduct: [{ id: "product1", price: 120, qty: 1 }]
     }
 }
