@@ -27,7 +27,8 @@ class Bill {
             case "IS_CUSTOMER_FOR_OVER_2_YEAS":
                 discountByUser = 5
                 break;
-            default: 0
+            default:
+                break;
         }
         return price - (price * discountByUser / 100)
     }
@@ -59,7 +60,7 @@ class Bill {
 
             // case total bill on 100$ then unless 5$
             totalMoney = this.totalBillDiscountOnBill100(totalMoney, DISCOUNT_BILL_ON_100)
-            
+
             ListData.push({ user: userL._name, type: userL._type, totalMoneyPay: totalMoney })
         })
         this._result = ListData
