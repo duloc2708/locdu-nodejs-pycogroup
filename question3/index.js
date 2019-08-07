@@ -35,26 +35,7 @@ const calNetpayment = (products, typeUser) => {
     totalMoney = totalBillDiscountOnBill100(totalMoney)
     return totalMoney
 }
-const createBill = (dataUser, dataProducts) => {
-    let user = [], products = [], ListData = [];
 
-    dataUser.map(item => {
-        user.push(new User({ id: item.id, name: item.name, type: item.type }))
-    })
-    dataProducts.map(item => {
-        let newProducts = new Product({ id: item.id, price: item.price })
-        newProducts.qty = item.qty
-        products.push(newProducts)
-    })
-    // add user and list products to cart
-    let cart = new Cart({ id: `card_1`, user, products })
-
-    // loop cart for cal bill earch user
-    cart.user.filter(userL => {
-        ListData.push({ user: userL.name, type: userL.type, totalMoneyPay: calNetpayment(cart.products, userL.type) })
-    })
-    return ListData
-}
 const createBillNew = (cart) => {
     let ListData = [];
     cart.getUser().map(userL => {
@@ -66,8 +47,7 @@ module.exports = {
     createBillNew: createBillNew,
     calNetpayment: calNetpayment,
     totalBillDiscountOnBill100: totalBillDiscountOnBill100,
-    totalBillOnDiscountByTypeUser: totalBillOnDiscountByTypeUser,
-    createBill: createBill
+    totalBillOnDiscountByTypeUser: totalBillOnDiscountByTypeUser
 }
 let user1 = new User({ id: 1, name: "User 1", type: "IS_AN_EMPLOYEE" })
 let user2 = new User({ id: 2, name: "User 2", type: "IS_AN_AFFILIATE" })
