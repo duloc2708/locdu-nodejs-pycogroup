@@ -1,19 +1,11 @@
+const { validKeyBeforeAdd } = require("../common")
 class Product {
-  constructor(id = '', price = 0) {
-    this._id = id;
-    this._price = price
-  }
-  get id() {
-    return this._id;
-  }
-  set id(id) {
-    this._id = id;
-  }
-  get price() {
-    return this._price;
-  }
-  set price(price) {
-    this._price = price;
+  constructor(entry) {
+    const setables = ["id", "price"];
+    Object.keys(entry).forEach(key => {
+      validKeyBeforeAdd(setables, key);
+    })
+    Object.assign(this, entry);
   }
 }
 module.exports = Product;

@@ -3,8 +3,11 @@ const CHARATAR2 = '='
 const CHARATAR3 = ';'
 const CHARATAR4 = '\n'
 //Complexity analysis O(n)
-let load = (strData) => {
-    const arrSplit = strData.split(CHARATAR4);
+let load = (strData = '') => {
+    const arrSplit = strData && strData.split(CHARATAR4) || '';
+    // not exist string return array temp 
+    if (!arrSplit) return [];
+
     return arrSplit.map((item) => {
         const itemObj = item.split(CHARATAR3), obj = {};
         itemObj.forEach((element) => {
@@ -15,7 +18,7 @@ let load = (strData) => {
     });
 }
 //Complexity analysis O(n)
-let store = (data) => data.map((item) => Object.keys(item).map((key) => `${key}=${item[key]}`).join(CHARATAR3)).join(CHARATAR4);
+let store = (data = []) => data.map((item) => Object.keys(item).map((key) => `${key}=${item[key]}`).join(CHARATAR3)).join(CHARATAR4);
 module.exports = {
     load: load,
     store: store
