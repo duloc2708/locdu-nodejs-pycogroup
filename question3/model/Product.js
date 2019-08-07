@@ -1,7 +1,7 @@
 const { validKeyBeforeAdd } = require("../common")
 class Product {
   constructor(entry) {
-    const setables = ["id", "price"];
+    const setables = ["id", "price", "qty"];
     Object.keys(entry).forEach(key => {
       validKeyBeforeAdd(setables, key);
     })

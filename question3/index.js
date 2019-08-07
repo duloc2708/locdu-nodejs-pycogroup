@@ -3,7 +3,6 @@ const ON_LIMIT_MONEY_HAVE_DISCOUNT = 100; //100$
 const Cart = require('./model/Cart.js');
 const Product = require('./model/Product.js');
 const User = require('./model/User.js');
-const { Q3: { listProduct, listUser } } = require('../data')
 
 const totalBillDiscountOnBill100 = (price, discount) => {
     if (price >= ON_LIMIT_MONEY_HAVE_DISCOUNT) {
@@ -56,10 +55,24 @@ const createBill = (dataUser, dataProducts) => {
     })
     return ListData
 }
+const createBillNew = (cart) => {
+    let ListData = [];
+    cart.getUser().map(userL => {
+        ListData.push({ user: userL.name, type: userL.type, totalMoneyPay: calNetpayment(cart.getProducts(), userL.type) })
+    })
+    return ListData
+}
 module.exports = {
+    createBillNew: createBillNew,
     calNetpayment: calNetpayment,
     totalBillDiscountOnBill100: totalBillDiscountOnBill100,
     totalBillOnDiscountByTypeUser: totalBillOnDiscountByTypeUser,
     createBill: createBill
 }
-console.log(createBill(listUser, listProduct))
+let user1 = new User({ id: 1, name: "User 1", type: "IS_AN_EMPLOYEE" })
+let user2 = new User({ id: 2, name: "User 2", type: "IS_AN_AFFILIATE" })
+let user3 = new User({ id: 3, name: "User 3", type: "IS_CUSTOMER_FOR_OVER_2_YEAS" })
+let itemProduct = new Product({ id: "product1", price: 100, qty: 1 })
+let itemProduct2 = new Product({ id: "product2", price: 100, qty: 1 })
+let cart = new Cart([user1, user2, user3], [itemProduct, itemProduct2])
+console.log(createBillNew(cart))
